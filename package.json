@@ -1,0 +1,32 @@
+{
+  "name": "accessibility_app",
+  "version": "1.0.0",
+  "description": "This is a MERN (MongoDB, Express, React and Node) app.",
+  "main": "index.js",
+  "scripts": {
+    "setup": "concurrently --kill-others-on-fail  \"cd server && yarn\" \"cd client && yarn --network-concurrency 1\"",
+    "client:build": "cd client && yarn build && rimraf client/src",
+    "client:dev": "cd client && yarn start",
+    "server:dev": "cd server && yarn start:dev",
+    "server:dev:test": "cd server && yarn start:dev:test",
+    "dev": "concurrently --kill-others-on-fail \"yarn server:dev\" \"yarn client:dev\"",
+    "client:test": "cd client && yarn test",
+    "server:test": "cd server && yarn test --detectOpenHandles",
+    "test": "concurrently --kill-others-on-fail \"yarn server:test\" \"yarn client:test\"",
+    "test:e2e:dev": "concurrently --kill-others-on-fail \"yarn dev\" \"npx cypress open --config-file cypress.dev.json\"",
+    "test:e2e:prod": "concurrently --kill-others-on-fail \"yarn start\" \"npx cypress open --config-file cypress.prod.json \"",
+    "client": "cd client && yarn build",
+    "server": "cd server && yarn start",
+    "build": "yarn setup && yarn client:build",
+    "heroku-postbuild": "rimraf ./cypress && yarn build",
+    "start": "yarn server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^6.3.0",
+    "rimraf": "^3.0.2",
+    "yarn": "^1.22.17"
+  }
+}
