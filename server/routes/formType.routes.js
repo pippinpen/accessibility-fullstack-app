@@ -30,9 +30,14 @@ const logUser = (req, res, next) => {
 };
 
 router
-  .get("/:id?", logToken, checkJwt, checkPermissions(ReadFormTypes), getFormTypes)
-  .post("/", logToken, checkJwt, checkPermissions(CreateFormType), addFormType)
-  .put("/:id", checkJwt, checkPermissions(UpdateFormType), updateFormType)
-  .delete("/:id", checkJwt, checkPermissions(DeleteFormType), removeFormType);
+  .get("/", logToken, checkJwt, getFormTypes) 
+  .get("/:id?", logToken, checkJwt, getFormTypes)
+  .post("/", logToken, checkJwt, addFormType)
+  .put("/:id", checkJwt, updateFormType)
+  .delete("/:id", checkJwt, removeFormType);
 
 module.exports = router;
+// checkPermissions(ReadFormTypes)
+//  checkPermissions(CreateFormType)
+//  checkPermissions(UpdateFormType)
+//  checkPermissions(DeleteFormType)

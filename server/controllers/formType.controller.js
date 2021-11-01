@@ -1,4 +1,4 @@
-const formType = require("../models/formType/formType.model");
+const FormType = require("../models/formType/formType.model");
 const { errorHandler } = require("./utils");
 const logger = require("../logger");
 

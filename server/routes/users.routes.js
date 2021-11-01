@@ -34,26 +34,26 @@ const logToken = (req, res, next) => {
 };
 
 router
-  .get(
-    "/:id?",
-    logToken,
-    checkJwt,
-    checkPermissions(ReadOwnUser),
-    getOwnUser
-  )
-  .post("/", logToken, checkJwt, checkPermissions(CreateOwnUser), addOwnUser)
-  .put("/:id", checkJwt, checkPermissions(UpdateOwnUser), updateOwnUser)
-  .delete("/:id", checkJwt, checkPermissions(DeleteOwnUser), removeOwnUser)
+  .get("/:id?", logToken, checkJwt, getOwnUser)
+  .post("/", logToken, checkJwt, addOwnUser)
+  .put("/:id", checkJwt, updateOwnUser)
+  .delete("/:id", checkJwt, removeOwnUser)
   // Admin
-  .get(
-    "/admin/:id?",
-    logToken,
-    checkJwt,
-    checkPermissions(ReadUsers),
-    getUsers
-  )
-  .post("/admin/", logToken, checkJwt, checkPermissions(CreateUsers), addUser)
-  .put("/admin/:id", checkJwt, checkPermissions(UpdateUsers), updateUser)
-  .delete("/admin/:id", checkJwt, checkPermissions(DeleteUsers), removeUser);
+  .get("/admin/:id?", logToken, checkJwt, getUsers)
+  .post("/admin/", logToken, checkJwt, addUser)
+  .put("/admin/:id", checkJwt, updateUser)
+  .delete("/admin/:id", checkJwt, removeUser);
 
 module.exports = router;
+
+// user permissions
+// checkPermissions(ReadOwnUser)
+// checkPermissions(CreateOwnUser)
+// checkPermissions(UpdateOwnUser)
+// checkPermissions(DeleteOwnUser)
+
+// admin permissions
+// checkPermissions(ReadUsers)
+// checkPermissions(CreateUsers)
+// checkPermissions(UpdateUsers)
+// checkPermissions(DeleteUsers)
