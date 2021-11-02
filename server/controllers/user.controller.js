@@ -8,9 +8,10 @@ exports.getUsers = function (req, res) {
     query._id = req.params.id;
   }
   User.find(query)
-    .populate('items')
+    // .populate('items')
     .exec((err, users) => {
-      if (err) return errorHandler(res, err);
+      // if (err) return errorHandler(res, err);
+      if (err) return console.log(res, err);
       if (req.params.id && users.length === 0)
         return res.status(404).send({ message: 'No user with that ID' });
       return res.status(200).json(users);
@@ -25,9 +26,10 @@ exports.getOwnUser = function (req, res) {
     query._id = req.params.id;
   }
   User.find(query)
-    .populate('items')
+    // .populate('items')
     .exec((err, userData) => {
-      if (err) return errorHandler(res, err);
+      // if (err) return errorHandler(res, err);
+      if (err) return console.log(res, err);
       if (req.params.id && userData.length === 0)
         return res.status(404).send({ message: 'No user with that ID' });
       return res.status(200).json(userData);

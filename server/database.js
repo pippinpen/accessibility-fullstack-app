@@ -11,7 +11,7 @@ logger.info(`MONGODB_URI ${MONGODB_URI}`);
       await mongoose.connect(MONGODB_URI, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
-        useCreateIndex: true,
+        // useCreateIndex: true,
       });
       logger.info(`Database Connected: ${MONGODB_URI}`)
       mongoose.connection.on('error', (err) => {

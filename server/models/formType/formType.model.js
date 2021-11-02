@@ -18,7 +18,8 @@ questionSchema = new Schema({
 const formTypeSchema = new Schema({
   category: {
     type: String,
-    enum: ["participantInfo", "venue", "presentingMaterials", "content", "food", "drink", "customQuestions", "participant-comment"]
+    enum: ['participantInfo', 'venue', 'presentingMaterials', 'content', 'food', 'drink', 'customQuestions', 'participant-comment'],
+    required: true,
   },
   questions: [{
     type: questionSchema,

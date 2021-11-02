@@ -30,7 +30,6 @@ const logUser = (req, res, next) => {
 };
 
 router
-  .get("/", logToken, checkJwt, getFormTypes) 
   .get("/:id?", logToken, checkJwt, getFormTypes)
   .post("/", logToken, checkJwt, addFormType)
   .put("/:id", checkJwt, updateFormType)
